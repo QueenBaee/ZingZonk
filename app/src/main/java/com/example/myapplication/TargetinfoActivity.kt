@@ -8,14 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class HomeActivity : AppCompatActivity() {
+class TargetinfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
-        val buatChallenge = findViewById<Button>(R.id.buatChallenge)
-        buatChallenge.setOnClickListener {
+        setContentView(R.layout.activity_targetinfo)
+        val kembali = findViewById<Button>(R.id.kembali)
+        val lanjut = findViewById<Button>(R.id.lanjut)
+        kembali.setOnClickListener {
             val intent = Intent(this, CreatechallengeActivity::class.java)
+            startActivity(intent)
+        }
+        lanjut.setOnClickListener {
+            val intent = Intent(this, ReviewchallengeActivity::class.java)
             startActivity(intent)
         }
         }

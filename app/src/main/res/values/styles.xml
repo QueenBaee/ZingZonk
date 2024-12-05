@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Tema Aplikasi -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Anda bisa menambahkan item-item tema lainnya sesuai kebutuhan -->
+        <item name="colorPrimary">#c9e7ff</item> <!-- Warna utama aplikasi -->
+        <item name="colorPrimaryDark">#3700B3</item> <!-- Warna gelap utama -->
+        <item name="colorAccent">#03DAC5</item> <!-- Warna aksen aplikasi -->
+
+        <!-- Tentukan warna latar belakang tombol jika perlu -->
+        <item name="colorButtonNormal">@android:color/holo_blue_light</item>
+
+        <!-- Gaya status bar -->
+        <item name="android:statusBarColor">#3700B3</item>
+    </style>
+
+</resources>

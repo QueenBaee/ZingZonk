@@ -14,45 +14,35 @@ import androidx.core.view.WindowInsetsCompat
 import org.mindrot.jbcrypt.BCrypt
 
 class RegisterActivity : AppCompatActivity() {
+    private lateinit var dbHelper : DatabaseHelper
+    private lateinit var Utils : Utils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
-
+        dbHelper = DatabaseHelper(this)
         val etUsername = findViewById<EditText>(R.id.username)
         val etPassword = findViewById<EditText>(R.id.password)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
-        val db = AppDatabase.getDatabase(applicationContext)
-        val userDao = db.UserDao()
 
        btnRegister.setOnClickListener{
-           val username = etUsername.text.toString()
-           val password = etPassword.text.toString()
+           val username = etUsername.text.toString().trim()
+           val password = etPassword.text.toString().trim()
 
-           val hashedPassword = hashPassword(password)
-           lifecycleScope.launch{
-               val existingUser = userDao.getUserByUsername(username)
-               if (existingUser == null){
-                   val  newUser =User(username = username, password = hashedPassword)
-                   userDao.InsertUser(newUser)
-
-                   runOnUiThread{
-                       Toast.makeText(applicationContext, "Registration successful!", Toast.LENGTH_SHORT).show()
-                   }
-                   val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                   startActivity(intent)
+           if (username.isEmpty() || password.isEmpty()){
+               Toast.makeText(this, "Isername dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+               }else{
+               val hashedPassword = Utils.hashPassword(password)
+               if(dbHelper.loginUser(username,hashedPassword)){
+                   Toast.makeText(this,"Login Berhasil", Toast.LENGTH_SHORT).show()
+                   startActivity(Intent(this, HomeActivity::class.java))
                    finish()
                }else{
-                   runOnUiThread{
-                       Toast.makeText(applicationContext, "Username already exists!", Toast.LENGTH_SHORT).show()
-                   }
+                   Toast.makeText(this,"Login Gagal, Username atau password salah", Toast.LENGTH_SHORT).show()
                }
            }
+           }
        }
-    }
 
-    private  fun hashPassword(password: String):String{
-        return BCrypt.hashpw(password, BCrypt.gensalt(12))
-    }
 }

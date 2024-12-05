@@ -1,12 +1,11 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 35
+    compileSdk = 34 // Sesuaikan dengan versi stable Compose
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -34,7 +33,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 
     buildFeatures {
@@ -54,16 +53,19 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
 
+    // Compose Compiler (penting untuk Kotlin)
+    implementation("androidx.compose.compiler:compiler:1.5.0")
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout) // Kompatibel dengan Kotlin 1.8.0
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.5")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
     // Room Database dependencies
-    implementation("androidx.room:room-runtime:2.6.0")
-    kapt("androidx.room:room-compiler:2.6.0")
+    // Tambahkan jika diperlukan
 
     // BCrypt for password hashing
     implementation("org.mindrot:jbcrypt:0.4")

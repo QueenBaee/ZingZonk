@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#c9e7ff"
+    android:padding="16dp">
+    <ImageView
+        android:id ="@+id/splash_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@drawable/rere" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f4ebe6"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Berikit ini adalah nama nama yang akan dikirimkan ke target secara acak. sehingga mustahil bagi target untuk mengetahui siapa pengirim sebenarnya.\nKlik Hapus untuk menghapus data. klik kembali untuk kembali ke halaman sebelumnya\nKlik kirim bila anda telah yakin untuk mengirimkan ZingZonk Challenge ke target anda"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama anda"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Kompetitor 1"
+            android:inputType="text"
+            android:textSize="12sp"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Kompetitor 2"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Kompetitor 3"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
+            android:inputType="text"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Masukkan Nama Target"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Masukkan nama target anda"
+            android:inputType="text"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Kontak Target anda"/>
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/Hapus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="251dp"
+                android:layout_marginBottom="16dp"
+                android:background="#3b4959"
+                android:text="Lanjut"
+                android:textColor="@android:color/white" />
+        </ListView>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
+        <Button
+            android:id="@+id/kembali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#3b4959"
+            android:text="Kembali"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/kirim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="251dp"
+            android:layout_marginBottom="16dp"
+            android:background="#3b4959"
+            android:text="Kirim"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+</RelativeLayout>

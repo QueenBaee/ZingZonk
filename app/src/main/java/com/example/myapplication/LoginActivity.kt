@@ -15,48 +15,45 @@ import org.mindrot.jbcrypt.BCrypt
 
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var dbHelper : DatabaseHelper
+    private lateinit var Utils : Utils
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-
+        dbHelper = DatabaseHelper(this)
         val usernameEditText = findViewById<EditText>(R.id.username)
         val passwordEditText = findViewById<EditText>(R.id.password)
         val loginButton = findViewById<Button>(R.id.button)
         val registerButton = findViewById<Button>(R.id.tvRegister)
 
-        loginButton.setOnClickListener {
-            val username = usernameEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
-            lifecycleScope.launch{
-                val user = userDao.getUserByUsername(username)
-                if (user != null){
-                    if (checkPassword(password,user.password)){
-                        runOnUiThread{
-                            Toast.makeText(applicationContext,"Login Berhasil",Toast.LENGTH_SHORT).show()
-                        }
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+        loginButton.setOnClickListener {
+            val username = usernameEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+
+                    if (username.isEmpty() || password.isEmpty()){
+                            Toast.makeText(this,"Masukkan Username dan Password",Toast.LENGTH_SHORT).show()
                     }else{
-                        runOnUiThread{
-                            Toast.makeText(applicationContext,"Password Salah",Toast.LENGTH_SHORT).show()
+                        val hashedPassword = Utils.hashPassword(password)
+                                if (dbHelper.loginUser(username, hashedPassword)) {
+                                    Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, HomeActivity::class.java))
+                                    finish()
+                        }else{
+                            Toast.makeText(this, "Login Gagal. Username atau Password salah", Toast.LENGTH_SHORT).show()
                         }
+
                     }
-                }else{
-                    runOnUiThread{
-                        Toast.makeText(applicationContext,"Username tidak ditemukan",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-            registerButton.setOnClickListener {
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
+
+
         }
     }
+
 }
-private fun checkPassword (inputPassword: String, storedHash: String): Boolean{
-    return BCrypt.checkpw(inputPassword,storedHash)
-}
+
