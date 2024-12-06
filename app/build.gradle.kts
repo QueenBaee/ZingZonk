@@ -38,6 +38,7 @@ android {
 
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
@@ -56,7 +57,9 @@ dependencies {
     // Compose Compiler (penting untuk Kotlin)
     implementation("androidx.compose.compiler:compiler:1.5.0")
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout) // Kompatibel dengan Kotlin 1.8.0
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx) // Kompatibel dengan Kotlin 1.8.0
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

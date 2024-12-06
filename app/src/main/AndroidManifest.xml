@@ -13,6 +13,22 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".BluestardetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GreenstardetailActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RedstardetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YellowstardetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GreystardetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChallengeaktifActivity"
             android:exported="false" />
         <activity

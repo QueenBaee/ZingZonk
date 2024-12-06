@@ -52,7 +52,7 @@
                 android:src="@drawable/yellow_star"
                 android:contentDescription="Bintang" />
         <Button
-            android:id="@+id/detailsButton"
+            android:id="@+id/detailsButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Details"
@@ -82,7 +82,7 @@
             android:src="@drawable/grey_star"
             android:contentDescription="Bintang" />
         <Button
-            android:id="@+id/detailsButton1"
+            android:id="@+id/detailsButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Details"
