@@ -18,5 +18,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, CreatechallengeActivity::class.java)
             startActivity(intent)
         }
+        val kotakChallenge =  findViewById<Button>(R.id.kotakChallenge)
+        kotakChallenge.setOnClickListener{
+            val intent = Intent(this, KotakchallengeActivity::class.java)
+            startActivity(intent)
+        }
         }
     }

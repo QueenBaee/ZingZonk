@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#c9e7ff"
-    android:padding="16dp">
+    android:padding="27dp">
     <ImageView
         android:id ="@+id/splash_image"
         android:layout_width="match_parent"

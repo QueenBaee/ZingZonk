@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
+import com.example.myapplication.Utils;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "UserDatabase.db";
@@ -34,21 +37,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean registerUser(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        String hashedPassword = hashPassword(password);
         values.put(COLUMN_USERNAME, username);
-        values.put(COLUMN_PASSWORD, password);
+        values.put(COLUMN_PASSWORD, hashedPassword);
 
         long result = db.insert(TABLE_USERS,null,values);
         db.close();
         return result != -1;
     }
-    public boolean loginUser(String username, String hashedPassword){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAME + " = ? AND " + COLUMN_PASSWORD + " = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{username, hashedPassword});
 
-        boolean isUserFound = cursor.getCount() > 0;
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashBytes) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public boolean loginUser(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_PASSWORD + " FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAME + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{username});
+
+
+        boolean isUserFound = false;
+        if (cursor.moveToFirst()) {
+            String storedHashedPassword = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
+            String hashedInputPassword = hashPassword(password);
+            isUserFound = hashedInputPassword.equals(storedHashedPassword);
+        }
+
         cursor.close();
         db.close();
         return isUserFound;
     }
+
 }

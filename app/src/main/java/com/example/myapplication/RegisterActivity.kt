@@ -12,10 +12,11 @@ import android.content.Intent
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.mindrot.jbcrypt.BCrypt
+import com.example.myapplication.Utils
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var dbHelper : DatabaseHelper
-    private lateinit var Utils : Utils
+    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var Utils: Utils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,23 +27,24 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
 
-       btnRegister.setOnClickListener{
-           val username = etUsername.text.toString().trim()
-           val password = etPassword.text.toString().trim()
+        btnRegister.setOnClickListener {
+            val username = etUsername.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
-           if (username.isEmpty() || password.isEmpty()){
-               Toast.makeText(this, "Isername dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
-               }else{
-               val hashedPassword = Utils.hashPassword(password)
-               if(dbHelper.loginUser(username,hashedPassword)){
-                   Toast.makeText(this,"Login Berhasil", Toast.LENGTH_SHORT).show()
-                   startActivity(Intent(this, HomeActivity::class.java))
-                   finish()
-               }else{
-                   Toast.makeText(this,"Login Gagal, Username atau password salah", Toast.LENGTH_SHORT).show()
-               }
-           }
-           }
-       }
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Username dan password tidak boleh kosong", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                val isRegistered = dbHelper.registerUser(username, password)
+                if (isRegistered) {
+                    Toast.makeText(this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "Registrasi Gagal. Coba lagi.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 
 }

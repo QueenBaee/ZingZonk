@@ -3,32 +3,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#c9e7ff"
-    android:padding="16dp">
+    android:background="#C9E7FF"
+    android:padding="27dp">
     <ImageView
-        android:id ="@+id/splash_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:src="@drawable/rere" />
-
+        android:src="@drawable/rere"/>
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f4ebe6"
+        android:background="#F4EBE6"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="10dp">
+
 
         <TextView
             android:id="@+id/textViewWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Berikit ini adalah nama nama yang akan dikirimkan ke target secara acak. sehingga mustahil bagi target untuk mengetahui siapa pengirim sebenarnya.\nKlik Hapus untuk menghapus data. klik kembali untuk kembali ke halaman sebelumnya\nKlik kirim bila anda telah yakin untuk mengirimkan ZingZonk Challenge ke target anda"
+            android:text="Berikut ini adalah nama nama yang akan dikirimkan ke target secara acak. sehingga mustahil bagi target untuk mengetahui siapa pengirim sebenarnya.\nKlik Hapus untuk menghapus data.\nklik kembali untuk kembali ke halaman sebelumnya\nKlik kirim bila anda telah yakin untuk mengirimkan ZingZonk Challenge ke target anda"
             android:textSize="12dp"
             android:textStyle="bold" />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -100,7 +97,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pilih Kontak Target anda"/>
-
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
@@ -108,19 +104,7 @@
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp"
             android:padding="8dp">
-
-            <Button
-                android:id="@+id/Hapus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="251dp"
-                android:layout_marginBottom="16dp"
-                android:background="#3b4959"
-                android:text="Lanjut"
-                android:textColor="@android:color/white" />
         </ListView>
-
-
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

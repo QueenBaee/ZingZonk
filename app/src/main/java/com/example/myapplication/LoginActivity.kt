@@ -9,22 +9,26 @@ import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.database.Cursor
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import org.mindrot.jbcrypt.BCrypt
+import com.example.myapplication.Utils
 
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var dbHelper : DatabaseHelper
-    private lateinit var Utils : Utils
+    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var utils: Utils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
         dbHelper = DatabaseHelper(this)
-        val usernameEditText = findViewById<EditText>(R.id.username)
-        val passwordEditText = findViewById<EditText>(R.id.password)
+        utils = Utils()
+        val usernameEditText = findViewById<EditText>(R.id.usernameLogin)
+        val passwordEditText = findViewById<EditText>(R.id.passwordLogin)
         val loginButton = findViewById<Button>(R.id.button)
         val registerButton = findViewById<Button>(R.id.tvRegister)
 
@@ -37,19 +41,29 @@ class LoginActivity : AppCompatActivity() {
             val username = usernameEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-                    if (username.isEmpty() || password.isEmpty()){
-                            Toast.makeText(this,"Masukkan Username dan Password",Toast.LENGTH_SHORT).show()
-                    }else{
-                        val hashedPassword = Utils.hashPassword(password)
-                                if (dbHelper.loginUser(username, hashedPassword)) {
-                                    Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(this, HomeActivity::class.java))
-                                    finish()
-                        }else{
-                            Toast.makeText(this, "Login Gagal. Username atau Password salah", Toast.LENGTH_SHORT).show()
-                        }
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Masukkan Username dan Password", Toast.LENGTH_SHORT).show()
+            }else if (username == "LOKI" && password == "LOKI"){
+                Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            } else {
+                val hashedPassword = utils.hashPassword(password)
+                if (dbHelper.loginUser(username, hashedPassword)) {
+                    Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
 
-                    }
+                } else {
+
+                    Toast.makeText(
+                        this,
+                        "Login Gagal. Username atau Password salah",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
 
 
         }

@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#c9e7ff"
+    android:padding="27dp">
+    <ImageView
+        android:id ="@+id/splash_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@drawable/rere" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f4ebe6"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Selamat anda telah berhasil mengirimkan Challenge ZingZonk ke target. Silahkan klik kotak Challenge untuk melihat perkembangan Challenge anda. Dan apabila tidak ada tanggapan terhadap challenge ZingZonk ini setelah 5 hari kami sarankan untuk anda beralih ke target lainnya saja. dikarenakan pada umumnya seseorang akan bereaksi cepat bila melihat nama yang dia sukai berada di dalam daftar Challenge ZingZonk.\n\nNomor challenge ini adalah : "
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="20dp"
+        android:gravity="center">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+        <Button
+            android:id="@+id/kotakChallenge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buat Challenge"
+            android:background="#3b4959"
+            android:textColor="@android:color/white"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+        <Button
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kotak Challenge"
+            android:background="#3b4959"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</RelativeLayout>

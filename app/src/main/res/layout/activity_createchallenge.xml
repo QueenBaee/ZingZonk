@@ -31,17 +31,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Masukkan nama anda"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp" />
         <EditText
+            android:id="@+id/nama"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Masukkan nama anda"
@@ -58,6 +53,7 @@
             android:textSize="12dp"
             android:textStyle="bold" />
         <EditText
+            android:id="@+id/komp1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Kompetitor 1"
@@ -65,18 +61,21 @@
 
             />
         <EditText
+            android:id="@+id/komp2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Kompetitor 2"
             android:inputType="text"
             />
         <EditText
+            android:id="@+id/komp3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Kompetitor 3"
             android:inputType="text"
             />
         <EditText
+            android:id="@+id/komp4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
@@ -84,6 +83,7 @@
             android:textSize="12sp"
             />
         <EditText
+            android:id="@+id/komp5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
@@ -91,6 +91,7 @@
             android:textSize="12sp"
             />
         <EditText
+            android:id="@+id/komp6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
@@ -98,6 +99,7 @@
             android:textSize="12sp"
             />
         <EditText
+            android:id="@+id/komp7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Masukkan nama Kompetitor anda atau biarkan kosong"
